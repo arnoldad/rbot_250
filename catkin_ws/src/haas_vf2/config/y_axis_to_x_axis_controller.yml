@@ -1,0 +1,2 @@
+type: "position_controllers/JointPositionController"
+joint: y_axis_to_x_axis
