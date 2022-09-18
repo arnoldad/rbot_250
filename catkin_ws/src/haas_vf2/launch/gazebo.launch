@@ -21,12 +21,13 @@
 
   <rosparam command="load" file="$(find haas_vf2)/config/base_to_y_axis_controller.yml" ns="base_to_y_axis_controller" />
   <rosparam command="load" file="$(find haas_vf2)/config/y_axis_to_x_axis_controller.yml" ns="y_axis_to_x_axis_controller" />
-  <rosparam command="load" file="$(find haas_vf2)/config/gazebo_ros_control_params.yaml" />
+  <!-- <rosparam command="load" file="$(find haas_vf2)/config/gazebo_ros_control_params.yaml" /> -->
 
   <node name="vf2_controller_spawner" pkg="controller_manager" type="spawner" args="base_to_y_axis_controller y_axis_to_x_axis_controller"/>
 
   <!-- push robot_description to factory and spawn robot in gazebo -->
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 1.0 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen" />
+  <!-- <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 1.0 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen" /> -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 18.5 -x 0.0 -y 0.0 -urdf -model robot -param robot_description" respawn="false" output="screen" />
 
   <node pkg="robot_state_publisher" type="robot_state_publisher"  name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="30.0" />
