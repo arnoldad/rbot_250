@@ -1,0 +1,6 @@
+<launch>
+
+
+  <node name="vf2_position_server" pkg="haas_vf2" type="vf2_position_server.py" output="screen"/>
+
+</launch>

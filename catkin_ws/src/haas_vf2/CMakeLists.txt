@@ -10,6 +10,8 @@ project(haas_vf2)
 find_package(catkin REQUIRED COMPONENTS
   rviz
   xacro
+  std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -59,6 +61,12 @@ find_package(catkin REQUIRED COMPONENTS
 #   Service2.srv
 # )
 
+## Generate services in the 'srv' folder
+add_service_files(
+  FILES
+  vf2.srv 
+)
+
 ## Generate actions in the 'action' folder
 # add_action_files(
 #   FILES
@@ -71,6 +79,11 @@ find_package(catkin REQUIRED COMPONENTS
 #   DEPENDENCIES
 #   std_msgs  # Or other packages containing msgs
 # )
+
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -106,6 +119,13 @@ catkin_package(
 #  LIBRARIES haas_vf2
 #  CATKIN_DEPENDS rviz xacro
 #  DEPENDS system_lib
+)
+
+catkin_package(
+ INCLUDE_DIRS include
+ LIBRARIES haas_vf2
+ CATKIN_DEPENDS rviz xacro roscpp rospy std_msgs message_runtime
+ DEPENDS system_lib
 )
 
 ###########
@@ -162,6 +182,9 @@ include_directories(
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
+
+catkin_install_python(PROGRAMS scripts/vf2_position_server.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION} )
+
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
