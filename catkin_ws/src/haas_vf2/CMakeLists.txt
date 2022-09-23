@@ -183,7 +183,7 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
-catkin_install_python(PROGRAMS scripts/vf2_position_server.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION} )
+catkin_install_python(PROGRAMS scripts/vf2_position_server.py scripts/vf2_motion_server.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION} )
 
 
 ## Mark executables for installation
